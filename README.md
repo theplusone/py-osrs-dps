@@ -29,7 +29,7 @@ generate something presentable (fancy image, website, etc.).
   - The formulas are well-known, but not to me. lol
 - ~~Import a list of gear/items~~
   - ~~With some effort and cleanup, I might be able to rip this from the
-    spreadsheet~~ Wrote script to parse slot tables from wiki
+    spreadsheet~~
 - Import a list of NPCs
   - Determine some way to account for exceptions to normal NPC stats, e.g. ...
     - How are raids bosses scaled?
