@@ -17,13 +17,19 @@ spreadsheet (the DPS spreadsheet is an amazing tool, though).
 From there, it'd be neat to take the output from this tool and use it to
 generate something presentable (fancy image, website, etc.).
 
+## What's done so far?
+
+- List of gear/items
+  - `parse_table.py` in util/ can parse slot tables from the wiki;
+    `parse_all_tables.sh` runs the script for all slot tables.
+
 ## Stuff to do
 
 - Figure out how DPS calcs work
   - The formulas are well-known, but not to me. lol
-- Import a list of gear/items
-  - With some effort and cleanup, I might be able to rip this from the
-    spreadsheet
+- ~~Import a list of gear/items~~
+  - ~~With some effort and cleanup, I might be able to rip this from the
+    spreadsheet~~ Wrote script to parse slot tables from wiki
 - Import a list of NPCs
   - Determine some way to account for exceptions to normal NPC stats, e.g. ...
     - How are raids bosses scaled?
