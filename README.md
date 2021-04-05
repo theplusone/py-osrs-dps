@@ -22,6 +22,9 @@ generate something presentable (fancy image, website, etc.).
 - List of gear/items
   - `parse_table.py` in util/ can parse slot tables from the wiki;
     `parse_all_tables.sh` runs the script for all slot tables.
+- List of NPCs
+  - Taken from the DPS spreadsheet. Scaling formulas for raids NPCs were found,
+    but how I'll implement them remains to be seen.
 
 ## Stuff to do
 
@@ -30,7 +33,7 @@ generate something presentable (fancy image, website, etc.).
 - ~~Import a list of gear/items~~
   - ~~With some effort and cleanup, I might be able to rip this from the
     spreadsheet~~
-- Import a list of NPCs
+- ~~Import a list of NPCs~~
   - Determine some way to account for exceptions to normal NPC stats, e.g. ...
     - ~~How are raids bosses scaled?~~ Formulas can be found in DPS spreadsheet
       under "NPC stats" sheet
