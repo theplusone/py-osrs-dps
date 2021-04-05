@@ -32,7 +32,8 @@ generate something presentable (fancy image, website, etc.).
     spreadsheet~~
 - Import a list of NPCs
   - Determine some way to account for exceptions to normal NPC stats, e.g. ...
-    - How are raids bosses scaled?
+    - ~~How are raids bosses scaled?~~ Formulas can be found in DPS spreadsheet
+      under "NPC stats" sheet
     - How can I program Ice Demon to use regular defence rather than mage level
       for magic defense rolls?
 - TBD
