@@ -24,5 +24,9 @@ columns = ["Name", "Stab attack", "Slash attack", "Crush attack",
            "Ranged strength", "Magic damage", "Prayer", "Speed"]
 items.columns = columns
 
+# Fix magic damage column (e.g. "+2%" -> 0.02)
+items["Magic damage"] = items["Magic damage"].apply(
+    lambda x: float(x.replace("%", ""))/100)
+
 # Output
 print(items.to_csv(index=False))

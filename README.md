@@ -25,6 +25,10 @@ generate something presentable (fancy image, website, etc.).
 - List of NPCs
   - Taken from the DPS spreadsheet. Scaling formulas for raids NPCs were found,
     but how I'll implement them remains to be seen.
+- test.py
+  - Mostly scratchwork/goofing off/testing stuff goes in here before I move
+    stuff around to a more permanent location. Try running it
+    (`python3 -i test.py`) and playing around.
 
 ## Stuff to do
 
