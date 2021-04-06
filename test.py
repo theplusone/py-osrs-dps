@@ -6,6 +6,7 @@ import player as p
 npcs = pd.read_csv("npcs/npcs.csv").set_index("NPC")
 
 g = p.Gear(weapon="Sanguinesti staff#Charged",
+           style="magic accurate",
            head="Ancestral hat",
            cape="Imbued saradomin cape#Normal",
            neck="Occult necklace",

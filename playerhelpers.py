@@ -31,6 +31,12 @@ boost_flat = {
     "None":         0
 }
 
+# Somewhere around this point I remembered dict.get() exists lol
+melee_boost = {
+    "accurate": 3,
+    
+}
+
 def apply_stat_boosts(stats, prayer, boost):
     """
     Given base stats, active prayers, and active potions, calculate the
@@ -40,18 +46,57 @@ def apply_stat_boosts(stats, prayer, boost):
                           stats.ranged, stats.ranged_str, stats.magic)
     p1, p2, p3 = (prayer.melee, prayer.ranged, prayer.magic)
     b1, b2, b3 = (boost.melee, boost.ranged, boost.magic)
-    attack    = int((int(A * boost_coeff[b1]) + boost_flat[b1])
-                    * prayer_coeff["Attack"][p1])
-    strength  = int((int(S * boost_coeff[b1]) + boost_flat[b1])
-                    * prayer_coeff["Strength"][p1])
-    defence   = int((int(D * boost_coeff[b1]) + boost_flat[b1])
-                    * prayer_coeff["Defence"][p1])
-    ranged_a  = int((int(Ra * boost_coeff[b2]) + boost_flat[b2])
-                    * prayer_coeff["Ranged (a)"][p2])
-    ranged_s  = int((int(Rs * boost_coeff[b2]) + boost_flat[b2])
-                    * prayer_coeff["Ranged (s)"][p2])
-    magic     = int((int(A * boost_coeff[b3]) + boost_flat[b3])
-                    * prayer_coeff["Magic"][p3])
-    return Stats(attack=attack, strength=strength, defence=defence,
-                 magic=magic, ranged=ranged_a, hitpoints=stats.hitpoints,
-                 prayer=stats.prayer, ranged_str=ranged_s)
+    A  = int((int(A * boost_coeff[b1]) + boost_flat[b1])
+             * prayer_coeff["Attack"][p1])
+    S  = int((int(S * boost_coeff[b1]) + boost_flat[b1])
+             * prayer_coeff["Strength"][p1])
+    D  = int((int(D * boost_coeff[b1]) + boost_flat[b1])
+             * prayer_coeff["Defence"][p1])
+    Ra = int((int(Ra * boost_coeff[b2]) + boost_flat[b2])
+             * prayer_coeff["Ranged (a)"][p2])
+    Rs = int((int(Rs * boost_coeff[b2]) + boost_flat[b2])
+             * prayer_coeff["Ranged (s)"][p2])
+    M  = int((int(M * boost_coeff[b3]) + boost_flat[b3])
+             * prayer_coeff["Magic"][p3])
+    return Stats(attack=A, strength=S, defence=D, magic=M, ranged=Ra,
+                 ranged_str=Rs, hitpoints=stats.hitpoints, prayer=stats.prayer)
+
+def apply_style_boosts(stats, style):
+    """
+    Given attack style and stats, apply the necessary invisible boosts.
+    Valid styles are:
+        "(stab|slash|crush|ranged|magic) 
+         (controlled|accurate|aggressive|defensive|long|autocast)"
+    """
+    # Get attack type (stab, slash, crush, ranged, magic, etc.) and style
+    # (accurate, aggressive, controlled, rapid, long, etc.)
+    t = style.split(" ")[0]
+    s = style.split(" ")[1]
+    
+    A, S, D, Ra, Rs, M = (stats.attack + 8,     stats.strength + 8,
+                          stats.defence + 8,    stats.ranged + 8,
+                          stats.ranged_str + 8, stats.magic + 8)
+
+    # There's gotta be a better way to do this, but I'm too dumb to see it.
+    if (t == "stab") or (t == "slash") or (t == "crush"):
+        if s == "controlled":
+            A, S, D = A + 1, S + 1, D + 1
+        elif s == "accurate":
+            A = A + 3
+        elif s == "aggressive":
+            S = S + 3
+        elif s == "defensive":
+            D = D + 3
+    elif t == "ranged":
+        if s == "accurate":
+            Ra, Rs = Ra + 3, Rs + 3
+        elif s == "long":
+            D = D + 3
+    elif t == "magic":
+        if s == "accurate":
+            M = M + 3
+        elif s == "long":
+            M, D = M + 1, D + 3
+
+    return Stats(attack=A, strength=S, defence=D, magic=M, ranged=Ra,
+                 ranged_str=Rs, hitpoints=stats.hitpoints, prayer=stats.prayer)
