@@ -31,12 +31,6 @@ boost_flat = {
     "None":         0
 }
 
-# Somewhere around this point I remembered dict.get() exists lol
-melee_boost = {
-    "accurate": 3,
-    
-}
-
 def apply_stat_boosts(stats, prayer, boost):
     """
     Given base stats, active prayers, and active potions, calculate the
