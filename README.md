@@ -1,5 +1,7 @@
 # py-osrs-dps
 
+`!!! MAX BIG FAN !!!`
+
 ## Current status
 
 **Brand new project (i.e. not working yet).**
