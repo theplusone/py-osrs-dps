@@ -40,7 +40,6 @@ def apply_stat_boosts(stats, prayer, boost):
                           stats.ranged, stats.ranged_str, stats.magic)
     p1, p2, p3 = (prayer.melee, prayer.ranged, prayer.magic)
     b1, b2, b3 = (boost.melee, boost.ranged, boost.magic)
-    #attack = int((int(a * pot_coeff[potion]
     attack    = int((int(A * boost_coeff[b1]) + boost_flat[b1])
                     * prayer_coeff["Attack"][p1])
     strength  = int((int(S * boost_coeff[b1]) + boost_flat[b1])
