@@ -4,7 +4,18 @@
 
 ## Current status
 
-**Brand new project (i.e. not working yet).**
+**Semi-working**
+
+This code (seemingly) provides accurate DPS calcs _if and only if_:
+- Your gear setup does not have any set bonuses (e.g. void, inquisitors)
+- You're not taking advantage of enemy attributes (e.g. arclight on demons,
+  lance on dragons, salve on undead, tbow on CoX monsters,
+  [etc.](https://oldschool.runescape.wiki/w/Monster_attribute))
+- You're soloing raids (all NPCs assume 1-man stats right now)
+- You're not fighting something where the attack and defence rolls vary from the
+  norm
+  - e.g. Ice Demon, who uses regular defence instead of mage defence for defence
+    rolls
 
 ## What is this?
 
@@ -34,8 +45,9 @@ generate something presentable (fancy image, website, etc.).
 
 ## Stuff to do
 
-- Figure out how DPS calcs work
-  - The formulas are well-known, but not to me. lol
+- ~~Figure out how DPS calcs work~~
+  - ~~The formulas are well-known, but not to me. lol~~ I've got a decent grasp
+    on the formulas now
 - ~~Import a list of gear/items~~
   - ~~With some effort and cleanup, I might be able to rip this from the
     spreadsheet~~
@@ -46,6 +58,7 @@ generate something presentable (fancy image, website, etc.).
     - How can I program Ice Demon to use regular defence rather than mage level
       for magic defense rolls?
 - Handle all/most of the gear/set bonuses
+- General code cleanup
 - TBD
   - I'm not good at planning things. I'll add more issues to this list as they
     come up.
