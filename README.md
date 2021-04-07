@@ -18,6 +18,7 @@ This code (seemingly) provides accurate DPS calcs _if and only if_:
   - e.g. Ice Demon, who uses regular defence instead of mage defence for defence
     rolls
 - You're not scything something larger than 1x1
+- And probably at least a couple other things I haven't thought of
     
 Unfortunately, a lot of these scenarios apply in endgame PvM, so the overall
 usefulness of this code is pretty limited at the moment. But this hopefully
