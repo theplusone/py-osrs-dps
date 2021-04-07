@@ -63,7 +63,7 @@ def apply_style_boosts(stats, style):
     """
     Given attack style and stats, apply the necessary invisible boosts.
     Valid styles are:
-        "(stab|slash|crush|ranged|magic) 
+        "(Stab|Slash|Crush|Ranged|Magic) 
          (controlled|accurate|aggressive|defensive|long|autocast)"
     """
     # Get attack type (stab, slash, crush, ranged, magic, etc.) and style
@@ -76,7 +76,7 @@ def apply_style_boosts(stats, style):
                           stats.ranged_str + 8, stats.magic + 8)
     old_ms = stats.magic_str
     # There's gotta be a better way to do this, but I'm too dumb to see it.
-    if (t == "stab") or (t == "slash") or (t == "crush"):
+    if (t == "Stab") or (t == "Slash") or (t == "Crush"):
         if s == "controlled":
             A, S, D = A + 1, S + 1, D + 1
         elif s == "accurate":
@@ -85,12 +85,12 @@ def apply_style_boosts(stats, style):
             S = S + 3
         elif s == "defensive":
             D = D + 3
-    elif t == "ranged":
+    elif t == "Ranged":
         if s == "accurate":
             Ra, Rs = Ra + 3, Rs + 3
         elif s == "long":
             D = D + 3
-    elif t == "magic":
+    elif t == "Magic":
         if s == "accurate":
             M = M + 3
         elif s == "long":

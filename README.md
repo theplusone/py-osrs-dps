@@ -45,6 +45,7 @@ generate something presentable (fancy image, website, etc.).
       under "NPC stats" sheet
     - How can I program Ice Demon to use regular defence rather than mage level
       for magic defense rolls?
+- Handle all/most of the gear/set bonuses
 - TBD
   - I'm not good at planning things. I'll add more issues to this list as they
     come up.

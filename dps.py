@@ -1,12 +1,9 @@
 from magic import spells
 
 def calc_max_hit(stats, gear):
-    """
-    Given stats and gear, calculate the max hit.
-    """
     if not gear.style.startswith("magic"):
         s = gear.style.split(" ")[0]
-        if (s == "stab") or (s == "slash") or (s == "crush"):
+        if (s == "Stab") or (s == "Slash") or (s == "Crush"):
             strength = stats.strength
             equipment_str = gear.bonuses["Strength"]
         else:
@@ -14,7 +11,7 @@ def calc_max_hit(stats, gear):
             equipment_str = gear.bonuses["Ranged strength"]
         step1 = strength * (equipment_str + 64)
         step2 = (step1 + 320)/640
-        step3 = int(step2) * 1.00 # TODO: s/1.00/whatever gear bonus
+        step3 = int(step2) * 1.00 # TODO: s/1.00/whatever gear bonus/
         return int(step3)
     else:
         max_hit = spells[gear.spell]
@@ -25,8 +22,21 @@ def calc_max_hit(stats, gear):
         # TODO: Account for other bonuses (salve, slayer, tome of fire)
         return int(max_hit * bonus)
 
+def calc_atk_roll(stats, gear):
+    style = gear.style.split(" ")[0]
+    atk_bonus = gear.bonuses[style + " attack"]
+    if (style == "Stab") or (style == "Slash") or (style == "Crush"):
+        step1 = stats.attack * (atk_bonus + 64)
+    elif (style == "Ranged"):
+        step1 = stats.ranged * (atk_bonus + 64)
+    elif (style == "Magic"):
+        step1 = stats.magic * (atk_bonus + 64)
+    step2 = step1 * 1.00 # TODO: Set bonuses
+    return int(step2)
+
 class DPS:
     def __init__(self, you, enemy):
         self.you = you
         self.enemy = enemy
         self.max_hit = calc_max_hit(self.you.stats, self.you.gear)
+        self.atk_roll = calc_atk_roll(self.you.stats, self.you.gear)

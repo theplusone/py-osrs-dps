@@ -7,7 +7,7 @@ from dps import DPS
 npcs = pd.read_csv("npcs/npcs.csv").set_index("NPC")
 
 g = p.Gear(weapon ="Trident of the swamp#Charged",
-           style  ="magic accurate",
+           style  ="Magic accurate",
            spell  ="Swamp built-in",
            head   ="Neitiznot faceguard",
            cape   ="Imbued saradomin cape#Normal",
