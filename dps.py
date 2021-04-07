@@ -1,7 +1,7 @@
 from magic import spells
 
 def calc_max_hit(stats, gear):
-    if not gear.style.startswith("magic"):
+    if not gear.style.startswith("Magic"):
         s = gear.style.split(" ")[0]
         if (s == "Stab") or (s == "Slash") or (s == "Crush"):
             strength = stats.strength
@@ -34,9 +34,36 @@ def calc_atk_roll(stats, gear):
     step2 = step1 * 1.00 # TODO: Set bonuses
     return int(step2)
 
+def calc_def_roll(style, stats):
+    if style == "Magic":
+        defence = stats["Magic level"]
+    else:
+        defence = stats["Defence level"]
+    return int((defence + 9) * (stats[style + " defence"] + 64))
+
+def calc_accuracy(atk_roll, def_roll):
+    if atk_roll > def_roll:
+        return 1 - (def_roll + 2)/(2 * atk_roll + 1)
+    else:
+        return atk_roll/(2 * def_roll + 1)
+
+def calc_dps(dph, gear):
+    if "rapid" in gear.style:
+        gear.bonuses["Speed"] = gear.bonuses["Speed"] - 1
+    speed_in_seconds = gear.bonuses["Speed"] * 0.6
+    return dph / speed_in_seconds
+
 class DPS:
     def __init__(self, you, enemy):
         self.you = you
         self.enemy = enemy
-        self.max_hit = calc_max_hit(self.you.stats, self.you.gear)
-        self.atk_roll = calc_atk_roll(self.you.stats, self.you.gear)
+        # Stuff needed for DPS
+        self.max_hit  = calc_max_hit(you.stats, you.gear)
+        self.atk_roll = calc_atk_roll(you.stats, you.gear)
+        self.def_roll = calc_def_roll(you.gear.style.split(" ")[0], enemy)
+        self.accuracy = calc_accuracy(self.atk_roll, self.def_roll)
+        # Damage-per-hit
+        self.dph      = (self.max_hit * self.accuracy) / 2
+        # Damage-per-second!
+        self.dps      = calc_dps(self.dph, you.gear)
+        
