@@ -7,7 +7,8 @@
 **Semi-working**
 
 This code (seemingly) provides accurate DPS calcs _if and only if_:
-- Your gear setup does not have any set bonuses (e.g. void, inquisitors)
+- Your gear setup does not have any set bonuses (e.g. void, inquisitors, slayer
+  helm)
 - You're not taking advantage of enemy attributes (e.g. arclight on demons,
   lance on dragons, salve on undead, tbow on CoX monsters,
   [etc.](https://oldschool.runescape.wiki/w/Monster_attribute))
@@ -16,6 +17,11 @@ This code (seemingly) provides accurate DPS calcs _if and only if_:
   norm
   - e.g. Ice Demon, who uses regular defence instead of mage defence for defence
     rolls
+- You're not scything something larger than 1x1
+    
+Unfortunately, a lot of these scenarios apply in endgame PvM, so the overall
+usefulness of this code is pretty limited at the moment. But this hopefully
+won't be the case eventually.
 
 ## What is this?
 
