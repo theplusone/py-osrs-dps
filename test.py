@@ -6,14 +6,14 @@ from dps import DPS
 # Load NPCs into a DataFrame
 npcs = pd.read_csv("npcs/npcs.csv").set_index("NPC")
 
-g = p.Gear(weapon ="Trident of the swamp#Charged",
+g = p.Gear(weapon ="Trident of the swamp",
            style  ="Magic accurate",
            spell  ="Swamp built-in",
            head   ="Neitiznot faceguard",
-           cape   ="Imbued saradomin cape#Normal",
+           cape   ="Imbued saradomin cape",
            neck   ="Occult necklace",
-           body   ="Ahrim's robetop#100",
-           legs   ="Ahrim's robeskirt#100",
+           body   ="Ahrim's robetop",
+           legs   ="Ahrim's robeskirt",
            hands  ="Tormented bracelet")
 
 you = p.Player(gear=g)
