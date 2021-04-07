@@ -19,7 +19,7 @@ class Gear:
             return None
     def __init__(self, weapon=None, ammo=None, head=None, cape=None, neck=None,
                  body=None, legs=None, shield=None, hands=None, feet=None,
-                 ring=None, style=None):
+                 ring=None, style=None, spell=None):
         self.weapon = self.find_item(weapon)
         self.ammo   = self.find_item(ammo)
         self.head   = self.find_item(head)
@@ -32,3 +32,4 @@ class Gear:
         self.feet   = self.find_item(feet)
         self.ring   = self.find_item(ring)
         self.style  = style
+        self.spell  = spell

@@ -36,8 +36,9 @@ def apply_stat_boosts(stats, prayer, boost):
     Given base stats, active prayers, and active potions, calculate the
     effective stat level.
     """
-    A, S, D, Ra, Rs, M = (stats.attack, stats.strength, stats.defence,
-                          stats.ranged, stats.ranged_str, stats.magic)
+    A, S, D, Ra, Rs, M, Ms = (stats.attack, stats.strength, stats.defence,
+                              stats.ranged, stats.ranged_str, stats.magic,
+                              stats.magic_str)
     p1, p2, p3 = (prayer.melee, prayer.ranged, prayer.magic)
     b1, b2, b3 = (boost.melee, boost.ranged, boost.magic)
     A  = int((int(A * boost_coeff[b1]) + boost_flat[b1])
@@ -52,8 +53,11 @@ def apply_stat_boosts(stats, prayer, boost):
              * prayer_coeff["Ranged (s)"][p2])
     M  = int((int(M * boost_coeff[b3]) + boost_flat[b3])
              * prayer_coeff["Magic"][p3])
+    # Magic prayers only affect magic accuracy, so prayer_coeff's ignored here
+    Ms = int(int(Ms * boost_coeff[b3]) + boost_flat[b3])
     return Stats(attack=A, strength=S, defence=D, magic=M, ranged=Ra,
-                 ranged_str=Rs, hitpoints=stats.hitpoints, prayer=stats.prayer)
+                 ranged_str=Rs, hitpoints=stats.hitpoints, prayer=stats.prayer,
+                 magic_str=Ms)
 
 def apply_style_boosts(stats, style):
     """
@@ -70,7 +74,7 @@ def apply_style_boosts(stats, style):
     A, S, D, Ra, Rs, M = (stats.attack + 8,     stats.strength + 8,
                           stats.defence + 8,    stats.ranged + 8,
                           stats.ranged_str + 8, stats.magic + 8)
-
+    old_ms = stats.magic_str
     # There's gotta be a better way to do this, but I'm too dumb to see it.
     if (t == "stab") or (t == "slash") or (t == "crush"):
         if s == "controlled":
@@ -93,4 +97,5 @@ def apply_style_boosts(stats, style):
             M, D = M + 1, D + 3
 
     return Stats(attack=A, strength=S, defence=D, magic=M, ranged=Ra,
-                 ranged_str=Rs, hitpoints=stats.hitpoints, prayer=stats.prayer)
+                 ranged_str=Rs, hitpoints=stats.hitpoints, prayer=stats.prayer,
+                 magic_str=old_ms)
