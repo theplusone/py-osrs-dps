@@ -1,4 +1,4 @@
-from magic import spells
+from .magic import spells
 
 def calc_max_hit(stats, gear):
     if not gear.style.startswith("Magic"):
