@@ -12,7 +12,7 @@ This code (seemingly) provides accurate DPS calcs _if and only if_:
 - You're not taking advantage of enemy attributes (e.g. arclight on demons,
   lance on dragons, salve on undead, tbow on CoX monsters,
   [etc.](https://oldschool.runescape.wiki/w/Monster_attribute))
-- You're soloing raids (all NPCs assume 1-man stats right now)
+- You're fighting CoX Guardians
 - You're not fighting something where the attack and defence rolls vary from the
   norm
   - e.g. Ice Demon, who uses regular defence instead of mage defence for defence
@@ -39,6 +39,7 @@ generate something presentable (fancy image, website, etc.).
 
 ## What's done so far?
 
+- Semi-working DPS calcs (see "Current status" section above)
 - List of gear/items
   - `parse_table.py` in util/ can parse slot tables from the wiki;
     `parse_all_tables.sh` runs the script for all slot tables.
