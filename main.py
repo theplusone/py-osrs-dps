@@ -1,8 +1,9 @@
 import pandas as pd
 import math
-import player as p
-import enemy as e
-from dps import DPS
+
+import py_osrs_dps.player as p
+import py_osrs_dps.enemy as e
+import py_osrs_dps.dps as d
 
 # Load NPCs into a DataFrame
 # TODO: Put this in enemy.py instead?
@@ -20,5 +21,5 @@ g = p.Gear(weapon ="Trident of the swamp",
 
 you = p.Player(gear=g)
 enemy = e.Enemy(npcs.loc["Muttadiles (small)"], scale=5)
-d = DPS(you, enemy)
+d = d.DPS(you, enemy)
 

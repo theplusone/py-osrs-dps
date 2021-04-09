@@ -1,3 +1,7 @@
+"""
+Raid helper functions to scale stats. Makes enemy.py a bit less messy.
+"""
+
 def cox_scale_hp(name, hp, scale):
     if "Olm" in name:
         hp = int(hp + (hp * scale))
@@ -60,8 +64,3 @@ def scale_stats(stats, scale):
         stats["Hitpoints"] = tob_scale_hp(stats["Hitpoints"], scale)
 
     return stats
-
-class Enemy:
-    def __init__(self, stats, scale=1):
-        self.stats = scale_stats(stats, scale)
-        self.scale = scale

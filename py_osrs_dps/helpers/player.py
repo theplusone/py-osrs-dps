@@ -1,7 +1,5 @@
 # Helper functions for player.py
 
-from stats import Stats
-
 prayer_coeff = {
     "Attack":     {"Piety": 1.20, "Chivalry": 1.15,
                    "15%": 1.15, "10%": 1.10, "5%": 1.05, "None": 1.00},
@@ -55,9 +53,7 @@ def apply_stat_boosts(stats, prayer, boost):
              * prayer_coeff["Magic"][p3])
     # Magic prayers only affect magic accuracy, so prayer_coeff's ignored here
     Ms = int(int(Ms * boost_coeff[b3]) + boost_flat[b3])
-    return Stats(attack=A, strength=S, defence=D, magic=M, ranged=Ra,
-                 ranged_str=Rs, hitpoints=stats.hitpoints, prayer=stats.prayer,
-                 magic_str=Ms)
+    return (A, S, D, M, Ra, Rs, stats.hitpoints, stats.prayer, Ms)
 
 def apply_style_boosts(stats, style):
     """
@@ -96,6 +92,7 @@ def apply_style_boosts(stats, style):
         elif s == "long":
             M, D = M + 1, D + 3
 
-    return Stats(attack=A, strength=S, defence=D, magic=M, ranged=Ra,
-                 ranged_str=Rs, hitpoints=stats.hitpoints, prayer=stats.prayer,
-                 magic_str=old_ms)
+    # Not sure why old_ms even exists here since it doesn't seem like I'm
+    # changing it, but I'm too scared to touch it right now.
+    return (A, S, D, M, Ra, Rs, stats.hitpoints, stats.prayer, old_ms)
+ 
