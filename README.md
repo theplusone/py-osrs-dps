@@ -12,7 +12,7 @@ This code (seemingly) provides accurate DPS calcs _if and only if_:
 - You're not taking advantage of enemy attributes (e.g. arclight on demons,
   lance on dragons, salve on undead, tbow on CoX monsters,
   [etc.](https://oldschool.runescape.wiki/w/Monster_attribute))
-- You're fighting CoX Guardians
+- You're not fighting CoX Guardians
 - You're not fighting something where the attack and defence rolls vary from the
   norm
   - e.g. Ice Demon, who uses regular defence instead of mage defence for defence
