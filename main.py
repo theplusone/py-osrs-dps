@@ -9,17 +9,51 @@ import py_osrs_dps.dps as d
 # TODO: Put this in enemy.py instead?
 npcs = pd.read_csv("npcs/npcs.csv").set_index("NPC")
 
-g = p.Gear(weapon ="Trident of the swamp",
-           style  ="Magic accurate",
-           spell  ="Swamp built-in",
-           head   ="Neitiznot faceguard",
-           cape   ="Imbued saradomin cape",
-           neck   ="Occult necklace",
-           body   ="Ahrim's robetop",
-           legs   ="Ahrim's robeskirt",
-           hands  ="Tormented bracelet")
+# Working example
+g1 = p.Gear(weapon="Trident of the swamp",
+           style="Magic accurate",
+           spell="Swamp built-in",
+           head="Neitiznot faceguard",
+           cape="Imbued saradomin cape",
+           neck="Occult necklace",
+           body="Ahrim's robetop",
+           legs="Ahrim's robeskirt",
+           hands="Tormented bracelet")
 
-you = p.Player(gear=g)
+# Non-working example
+g2 = p.Gear(weapon="Scythe of vitur",
+            style="Slash aggressive",
+            head="Neitiznot faceguard",
+            cape="Infernal cape",
+            neck="Amulet of torture",
+            body="Bandos chestplate",
+            legs="Bandos tassets",
+            hands="Ferocious gloves",
+            feet="Primordial boots",
+            ring="Berserker ring (i)")
+
+you = p.Player(gear=g1)
+also_you = p.Player(gear=g2)
 enemy = e.Enemy(npcs.loc["Muttadiles (small)"], scale=5)
-d = d.DPS(you, enemy)
+d1 = d.DPS(you, enemy)
+d2 = d.DPS(also_you, enemy)
 
+print(f"Working: {d1.dps}")
+print(f"Not working: {d2.dps}")
+
+# Modifying scythe max hit and re-running the calcs gets us a number that's
+# kinda close to what the spreadsheet says; will need further testing:
+# 
+# >>> d2.max_hit
+# 48
+# >>> d2.max_hit = 48 + int(48/2) + int(48/4)
+# >>> d2.max_hit
+# 84
+# >>> d2.dph = (d2.max_hit * d2.accuracy) / 2
+# >>> d2.dph
+# 28.463356458024784
+# >>> d2.dps = d.calc_dps(d2.dph, g2)
+# d2.dps
+# 9.487785486008262
+#
+# Spreadsheet says 9.487855829
