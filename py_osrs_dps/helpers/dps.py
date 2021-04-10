@@ -1,7 +1,7 @@
 from . import magic
 spells = magic.spells
 
-def calc_max_hit(stats, gear):
+def calc_max_hit(stats, gear, size):
     if not gear.style.startswith("Magic"):
         s = gear.style.split(" ")[0]
         if (s == "Stab") or (s == "Slash") or (s == "Crush"):
@@ -13,6 +13,13 @@ def calc_max_hit(stats, gear):
         step1 = strength * (equipment_str + 64)
         step2 = (step1 + 320)/640
         step3 = int(step2) * 1.00 # TODO: s/1.00/whatever gear bonus/
+
+        if gear.weapon.name == "Scythe of vitur":
+            if size == 2:
+                return int(step3) + int(step3/2)
+            elif size >= 3:
+                return int(step3) + int(step3/2) + int(step3/4)
+
         return int(step3)
     else:
         max_hit = spells[gear.spell]

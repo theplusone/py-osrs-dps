@@ -34,12 +34,12 @@ g2 = p.Gear(weapon="Scythe of vitur",
 
 you = p.Player(gear=g1)
 also_you = p.Player(gear=g2)
-enemy = e.Enemy(npcs.loc["Great Olm (melee hand)"], scale=5)
+enemy = e.Enemy(npcs.loc["Verzik (Spider)"], scale=5)
 d1 = d.DPS(you, enemy)
 d2 = d.DPS(also_you, enemy)
 
 print(f"Working: {d1.dps}")
-print(f"Not working: {d2.dps}")
+print(f"Also working (I think): {d2.dps}")
 
 # Modifying scythe max hit and re-running the calcs gets us a number that's
 # kinda close to what the spreadsheet says; will need further testing:
