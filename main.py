@@ -53,7 +53,7 @@ print(f"Not working: {d2.dps}")
 # >>> d2.dph
 # 28.463356458024784
 # >>> d2.dps = d.calc_dps(d2.dph, g2)
-# d2.dps
+# >>> d2.dps
 # 9.487785486008262
 #
 # Spreadsheet says 9.487855829
