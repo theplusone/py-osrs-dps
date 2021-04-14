@@ -17,7 +17,6 @@ This code (seemingly) provides accurate DPS calcs _if and only if_:
   norm
   - e.g. Ice Demon, who uses regular defence instead of mage defence for defence
     rolls
-- You're not using defence-draining specs (DWH, BGS, Arclight)
 - And probably at least a couple other things I haven't thought of
     
 Unfortunately, a lot of these scenarios apply in endgame PvM, so the overall
