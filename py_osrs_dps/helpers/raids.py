@@ -2,6 +2,9 @@
 Raid helper functions to scale stats. Makes enemy.py a bit less messy.
 """
 
+# TODO: This is bugged since the stats in npcs.csv were already scaled to 1-man
+# and the formula relies on the current hp. Not a huge deal rn but will need
+# to be fixed before adding overkill DPS.
 def cox_scale_hp(name, hp, scale):
     if "Olm" in name:
         hp = int(hp + (hp * scale))

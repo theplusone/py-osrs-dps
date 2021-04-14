@@ -9,18 +9,14 @@ import py_osrs_dps.dps as d
 # TODO: Put this in enemy.py instead?
 npcs = pd.read_csv("npcs/npcs.csv").set_index("NPC")
 
-# Working example
-g1 = p.Gear(weapon="Trident of the swamp",
-           style="Magic accurate",
-           spell="Swamp built-in",
-           head="Neitiznot faceguard",
-           cape="Imbued saradomin cape",
-           neck="Occult necklace",
-           body="Ahrim's robetop",
-           legs="Ahrim's robeskirt",
-           hands="Tormented bracelet")
+# Not working
+g1 = p.Gear(weapon="Twisted bow",
+            ammo="Dragon arrow",
+            style="Ranged rapid",
+            cape="Ava's assembler",
+            neck="Necklace of anguish")
 
-# Non-working example
+# Probably working
 g2 = p.Gear(weapon="Scythe of vitur",
             style="Slash aggressive",
             head="Neitiznot faceguard",
@@ -34,12 +30,12 @@ g2 = p.Gear(weapon="Scythe of vitur",
 
 you = p.Player(gear=g1)
 also_you = p.Player(gear=g2)
-enemy = e.Enemy(npcs.loc["Great Olm (melee hand)"], scale=5, dwh=1)
+enemy = e.Enemy(npcs.loc["Great Olm (head)"], scale=5)
 d1 = d.DPS(you, enemy)
 d2 = d.DPS(also_you, enemy)
 
-print(f"Working: {d1.dps}")
-print(f"Also working (I think): {d2.dps}")
+print(f"d1.dps: {d1.dps}")
+print(f"d2.dps: {d2.dps}")
 
 # Modifying scythe max hit and re-running the calcs gets us a number that's
 # kinda close to what the spreadsheet says; will need further testing:
