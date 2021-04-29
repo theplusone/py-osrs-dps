@@ -77,7 +77,6 @@ def tbow_acc_bonus(atk_roll, enemy_stats):
     print(f"accuracy -> twisted bow -> {acc_pct/100}")
     return int(atk_roll * acc_pct/100)
     
-    
 def calc_atk_roll(stats, gear, enemy_stats):
     style = gear.style.split(" ")[0]
     atk_bonus = gear.bonuses[style + " attack"]

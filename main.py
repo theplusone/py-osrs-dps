@@ -9,14 +9,12 @@ import py_osrs_dps.dps as d
 # TODO: Put this in enemy.py instead?
 npcs = pd.read_csv("npcs/npcs.csv").set_index("NPC")
 
-# Not working
 g1 = p.Gear(weapon="Twisted bow",
             ammo="Dragon arrow",
             style="Ranged rapid",
             cape="Ava's assembler",
             neck="Necklace of anguish")
 
-# Probably working
 g2 = p.Gear(weapon="Scythe of vitur",
             style="Slash aggressive",
             head="Neitiznot faceguard",
@@ -30,7 +28,7 @@ g2 = p.Gear(weapon="Scythe of vitur",
 
 you = p.Player(gear=g1)
 also_you = p.Player(gear=g2)
-enemy = e.Enemy(npcs.loc["Great Olm (head)"], scale=5)
+enemy = e.Enemy(npcs.loc["Nylocas Hagios (big)"], scale=5)
 d1 = d.DPS(you, enemy)
 d2 = d.DPS(also_you, enemy)
 
